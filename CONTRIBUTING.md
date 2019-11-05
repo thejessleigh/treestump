@@ -10,7 +10,12 @@ This will install pre-commit for you. Then run `pre-commit install` to set up th
 Pre-commit will run each time you attempt to commit staged changes. You can run the pre-commit checks at any time
 using `pre-commit run`.
 
-If you are using macOS Mojave or greater, you may run into an issue with setting up your pre-commit environment the first time it runs. The error message If this happens, it's likely
+If you are using macOS Mojave or greater, you may run into an issue with setting up your pre-commit environment the first time it runs. If you see `ssl.SSLCertVerificationError` in your stack trace, you need to install Python certificates. To do this, go to `/Applications/Python 3.x/` and open the following files
+
+- `Install Certificates.command`
+- `Update Shell Profile.command`
+
+You should now be able to proceed.
 
 # Community Standards
 
