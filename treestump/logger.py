@@ -1,4 +1,4 @@
-import typing
+from typing import Type
 
 from formatter import TreestumpFormatter
 
@@ -6,7 +6,7 @@ from formatter import TreestumpFormatter
 class TreestumpLogger:
     def __init__(self, app_name: str, event_log_formatter_cls=None):
         """
-        Creates the TreestumpLogger instance
+        Creates the TreestumpLogger instance, using a custom formatter. The default is `TreestumpFormatter`. Any argument that overrides this default must be a subclass of `TreestumpFormatter`. If it is not, `TreestumpFormatter` will be used instead.
 
         @param app_name: The name of the application where the logger is being used
         @type app_name: str
@@ -16,7 +16,11 @@ class TreestumpLogger:
         """
         self.app_name = app_name
         if event_log_formatter_cls:
-            self._event_log_formatter_cls = event_log_formatter_class
+            try:
+                assert issubclass(event_log_formatter_cls, TreestumpFormatter)
+                self._event_log_formatter_cls = event_log_formatter_cls
+            except AssertionError:
+                self.event_log_formatter_cls = TreestumpFormatter
         else:
             self.event_log_formatter_cls = TreestumpFormatter
 
