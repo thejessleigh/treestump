@@ -1,6 +1,7 @@
+import logging
 from typing import Type
 
-from formatter import TreestumpFormatter
+from treestump.formatter import TreestumpFormatter
 
 
 class TreestumpLogger:
@@ -57,7 +58,7 @@ class TreestumpLogger:
 
         # Create a new logging.StreamHandler() and set our defined formatter on the handler
         handler = logging.StreamHandler()
-        handler.setFormatter(self._event_log_formatter_cls(self.app_name))
+        handler.setFormatter(self.event_log_formatter_cls(self.app_name))
         logger.addHandler(handler)
 
         return logger

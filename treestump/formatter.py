@@ -28,7 +28,6 @@ class TreestumpFormatter(logging.Formatter):
         exception = log_record.exc_info
         record_dict = {
             "timestamp": log_record.created,
-            "humanTime": log_record.asctime,
             "message": log_record.getMessage(),
             "host": self.host,
             "application": self.application,
@@ -41,11 +40,11 @@ class TreestumpFormatter(logging.Formatter):
             "module": log_record.module,
             "function": log_record.funcName,
             "line": log_record.lineno,
-            "processId": log_record.proces,
+            "processId": log_record.process,
             "processName": log_record.processName,
             "threadName": log_record.threadName,
-            "stackInfo": "".join(
-                self.FormatStack(log_record.stack_info)
+            "stackInfo": self.formatStack(
+                log_record.stack_info
             ),  # this may be too verbose - need feedback from folks
         }
         if exception:
@@ -59,4 +58,4 @@ class TreestumpFormatter(logging.Formatter):
         @return: JSON formatted string containing log record information
         @rtype: str
         """
-        return json.dumps(log_record, ensure_ascii=False)
+        return json.dumps(self._json_format(log_record), ensure_ascii=False)
