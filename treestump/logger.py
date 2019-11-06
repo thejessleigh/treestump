@@ -28,9 +28,9 @@ class TreestumpLogger:
         self._logger = self._configure_logger()
 
     def __repr__(self):
-        return f"TreestumpLogger for application {self.app_name}"
+        return f"TreestumpLogger for application '{self.app_name}'"
 
-    def log(self, message: str, *args, **kwargs):
+    def log(self, message: str, level=20, *args, **kwargs):
         """
         @param message: The human-readable message to log
         @type message: str
@@ -40,8 +40,7 @@ class TreestumpLogger:
         @type kwargs: dict
         """
         # If no level is specified, log at 20: INFO
-        level = kwargs.pop("level", 20)
-        self._logger.log(level, *args, **kwargs)
+        self._logger.log(level, message, *args, **kwargs)
 
     def _configure_logger(self):
         """
