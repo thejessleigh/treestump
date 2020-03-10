@@ -48,7 +48,7 @@ class TreestumpFormatter(logging.Formatter):
             ),  # this may be too verbose - need feedback from folks
         }
         if exception:
-            record_dict.update({"trace": "".join(self.FormatException(exception))})
+            record_dict.update({"trace": "".join(self.FormatException(Exception))})
         return record_dict
 
     def format(self, log_record: logging.LogRecord) -> str:

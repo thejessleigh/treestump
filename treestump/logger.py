@@ -1,5 +1,4 @@
 import logging
-from typing import Type
 
 from treestump.formatter import TreestumpFormatter
 

@@ -17,6 +17,11 @@ If you are using macOS Mojave or greater, you may run into an issue with setting
 
 You should now be able to proceed.
 
+# Running Tests
+
+To run the test suite, make sure you've installed the packages listed in
+`requirements-dev.txt`. Then run `pytest --cov=treestump`. Pull requests that significantly lower the test coverage will be rejected and asked to bring coverage back up to par.
+
 # Community Standards
 
 In general, PRs will be acknowledged within one week of receipt. I wish I could say that they would all be

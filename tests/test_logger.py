@@ -46,3 +46,7 @@ class TestTreestumpLogger:
         assert logged_message["message"] == message
         assert logged_message["level"] == "CRITICAL"
         assert logged_message["levelNumber"] == 50
+
+    # TODO
+    def test_logger_with_exception(self, test_formatter, test_record):
+        pass
